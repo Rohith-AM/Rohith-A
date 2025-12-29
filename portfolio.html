@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rohith | Portfolio</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f7f9fc;
+      color: #1f2933;
+      line-height: 1.6;
+    }
+
+    /* Soft texture */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(#dbeafe 1px, transparent 1px);
+      background-size: 20px 20px;
+      opacity: 0.25;
+      z-index: -1;
+    }
+
+    section {
+      padding: 80px 10%;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #2563eb, #06b6d4);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      margin-top: 15px;
+      font-size: 1.1rem;
+      max-width: 600px;
+      color: #475569;
+    }
+
+    /* Section title */
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+
+    /* Project cards */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 5px 10px;
+      border-radius: 20px;
+      background: #e0f2fe;
+      color: #0369a1;
+      margin-bottom: 10px;
+    }
+
+    /* Skills */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .skill {
+      padding: 10px 16px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #22d3ee, #3b82f6);
+      color: white;
+      font-size: 0.85rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Hi, I'm Rohith</h1>
+    <p>
+      A curious learner blending science, technology, and creativity.
+      I enjoy building simple digital systems and exploring ideas that grow over time.
+    </p>
+  </section>
+
+  <!-- PROJECTS -->
+  <section>
+    <h2 class="section-title">Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <span class="tag">Web</span>
+        <h3>Personal Website</h3>
+        <p>Designed and deployed a lightweight portfolio using GitHub Pages.</p>
+      </div>
+
+      <div class="card">
+        <span class="tag">Research</span>
+        <h3>Academic Exploration</h3>
+        <p>Worked on data collection, analysis, and scientific documentation.</p>
+      </div>
+
+      <div class="card">
+        <span class="tag">Automation</span>
+        <h3>Workflow Tools</h3>
+        <p>Experimented with productivity systems and digital organization.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section>
+    <h2 class="section-title">Skills & Tools</h2>
+    <div class="skills">
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">GitHub</div>
+      <div class="skill">Research Writing</div>
+      <div class="skill">Critical Thinking</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 Rohith • Built with curiosity 🌱
+  </footer>
+
+</body>
+</html>
