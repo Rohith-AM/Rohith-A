@@ -1,174 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rohith | Portfolio</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-      background: #f7f9fc;
-      color: #1f2933;
-      line-height: 1.6;
-    }
-
-    /* Soft texture */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image: radial-gradient(#dbeafe 1px, transparent 1px);
-      background-size: 20px 20px;
-      opacity: 0.25;
-      z-index: -1;
-    }
-
-    section {
-      padding: 80px 10%;
-    }
-
-    /* Hero */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      background: linear-gradient(90deg, #2563eb, #06b6d4);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero p {
-      margin-top: 15px;
-      font-size: 1.1rem;
-      max-width: 600px;
-      color: #475569;
-    }
-
-    /* Section title */
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 40px;
-    }
-
-    /* Project cards */
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 25px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-      transition: transform 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-    }
-
-    .tag {
-      display: inline-block;
-      font-size: 0.75rem;
-      padding: 5px 10px;
-      border-radius: 20px;
-      background: #e0f2fe;
-      color: #0369a1;
-      margin-bottom: 10px;
-    }
-
-    /* Skills */
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    .skill {
-      padding: 10px 16px;
-      border-radius: 30px;
-      background: linear-gradient(135deg, #22d3ee, #3b82f6);
-      color: white;
-      font-size: 0.85rem;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 40px;
-      color: #64748b;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohith | The Thinking Practitioner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Typography for a 'Calm' & 'Intellectual' feel */
+        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcfcfc; /* Very light grey/white for calmness */
+            color: #333;
+            line-height: 1.8;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Lora', serif; /* Serif font for headings */
+            color: #1a1a1a;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+        .card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            padding: 2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: #9ca3af;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+    </style>
 </head>
-<body>
+<body class="selection:bg-gray-200">
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>Hi, I'm Rohith</h1>
-    <p>
-      A curious learner blending science, technology, and creativity.
-      I enjoy building simple digital systems and exploring ideas that grow over time.
-    </p>
-  </section>
+    <nav class="py-8 px-6 max-w-4xl mx-auto flex justify-between items-center text-sm uppercase tracking-widest text-gray-500">
+        <a href="index.html" class="hover:text-black transition">← Back to Main</a>
+        <div class="space-x-6 hidden md:block">
+            <a href="#thinking" class="hover:text-black transition">Thinking</a>
+            <a href="#projects" class="hover:text-black transition">Projects</a>
+            <a href="#discipline" class="hover:text-black transition">Discipline</a>
+            <a href="#contact" class="hover:text-black transition">Contact</a>
+        </div>
+    </nav>
 
-  <!-- PROJECTS -->
-  <section>
-    <h2 class="section-title">Projects</h2>
-    <div class="projects">
-      <div class="card">
-        <span class="tag">Web</span>
-        <h3>Personal Website</h3>
-        <p>Designed and deployed a lightweight portfolio using GitHub Pages.</p>
-      </div>
+    <section class="max-w-3xl mx-auto px-6 py-20">
+        <h1 class="text-4xl md:text-5xl font-serif mb-8 leading-tight">
+            I am Rohith. A Biology Honors student building bridges between living systems and digital automation.
+        </h1>
+        <p class="text-lg text-gray-600 mb-8 max-w-2xl">
+            From a government school background to researching at Azim Premji University, my journey is defined by one thing: <strong>disciplined curiosity.</strong> I don't just use tools; I study how systems work—whether it’s a biological cell or a web server. I am interested in the intersection of deep learning, scientific research, and sustainable productivity.
+        </p>
+        
+        <div class="inline-flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full text-sm text-gray-700">
+            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            <span class="font-medium">Currently exploring:</span> 
+            <span>Financial structures of MNCs & Freelance Economics.</span>
+        </div>
+    </section>
 
-      <div class="card">
-        <span class="tag">Research</span>
-        <h3>Academic Exploration</h3>
-        <p>Worked on data collection, analysis, and scientific documentation.</p>
-      </div>
-
-      <div class="card">
-        <span class="tag">Automation</span>
-        <h3>Workflow Tools</h3>
-        <p>Experimented with productivity systems and digital organization.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section>
-    <h2 class="section-title">Skills & Tools</h2>
-    <div class="skills">
-      <div class="skill">HTML</div>
-      <div class="skill">CSS</div>
-      <div class="skill">GitHub</div>
-      <div class="skill">Research Writing</div>
-      <div class="skill">Critical Thinking</div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    © 2025 Rohith • Built with curiosity 🌱
-  </footer>
-
-</body>
-</html>
+    <section id="thinking" class="max-w-3xl mx-auto px-6 py-16">
+        <h2 class="section-title">Notes on Thinking</h2>
+        <div class="grid gap-8">
+            
+            <article class="card">
+                <span class="text-xs font-mono text-gray-400">SYSTEMS</span>
+                <h3 class="text-2xl mt-2 mb-4">The Obsidian vs. RemNote Struggle</h3>
+                <p class="text-gray-600 text-sm mb-4">
