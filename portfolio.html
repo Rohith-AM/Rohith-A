@@ -3,75 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rohith | The Thinking Practitioner</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Rohith A. | Systems-Oriented Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
-        /* Typography for a 'Calm' & 'Intellectual' feel */
-        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
-        
+        :root {
+            --bg-color: #0d1117; /* Dark Tech Background */
+            --text-color: #c9d1d9; /* Soft White */
+            --accent-color: #00ff41; /* Bio-Green */
+            --secondary-color: #8b949e; /* Grey for subtitles */
+            --card-bg: #161b22; /* Slightly lighter for cards */
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #fcfcfc; /* Very light grey/white for calmness */
-            color: #333;
-            line-height: 1.8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
         }
-        h1, h2, h3, h4 {
-            font-family: 'Lora', serif; /* Serif font for headings */
-            color: #1a1a1a;
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        .section-title {
-            font-size: 1.5rem;
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
-            font-weight: 600;
+
+        /* Header Section */
+        header {
+            text-align: center;
+            padding: 50px 0;
+            border-bottom: 1px solid #30363d;
         }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            font-family: monospace;
+        }
+
+        /* Sections */
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid #30363d;
+        }
+
+        h2 {
+            color: #ffffff;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Cards for Projects */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media(min-width: 600px) {
+            .grid { grid-template-columns: 1fr 1fr; }
+        }
+
         .card {
-            background: white;
-            border: 1px solid #e5e7eb;
-            padding: 2rem;
+            background: var(--card-bg);
+            padding: 20px;
             border-radius: 8px;
-            transition: all 0.3s ease;
+            border: 1px solid #30363d;
         }
-        .card:hover {
-            border-color: #9ca3af;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+
+        .card h3 { color: var(--accent-color); margin-top: 0; }
+        
+        /* Philosophy Quote */
+        .quote {
+            text-align: center;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            padding: 40px 0;
         }
+
+        /* Download Button */
+        .btn-download {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #000;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+
+        .btn-download:hover {
+            transform: scale(1.05);
+            background-color: #00cc33;
+        }
+
+        ul { list-style-type: none; padding: 0; }
+        li::before { content: "▹"; color: var(--accent-color); margin-right: 10px; }
     </style>
 </head>
-<body class="selection:bg-gray-200">
+<body>
 
-    <nav class="py-8 px-6 max-w-4xl mx-auto flex justify-between items-center text-sm uppercase tracking-widest text-gray-500">
-        <a href="index.html" class="hover:text-black transition">← Back to Main</a>
-        <div class="space-x-6 hidden md:block">
-            <a href="#thinking" class="hover:text-black transition">Thinking</a>
-            <a href="#projects" class="hover:text-black transition">Projects</a>
-            <a href="#discipline" class="hover:text-black transition">Discipline</a>
-            <a href="#contact" class="hover:text-black transition">Contact</a>
-        </div>
-    </nav>
-
-    <section class="max-w-3xl mx-auto px-6 py-20">
-        <h1 class="text-4xl md:text-5xl font-serif mb-8 leading-tight">
-            I am Rohith. A Biology Honors student building bridges between living systems and digital automation.
-        </h1>
-        <p class="text-lg text-gray-600 mb-8 max-w-2xl">
-            From a government school background to researching at Azim Premji University, my journey is defined by one thing: <strong>disciplined curiosity.</strong> I don't just use tools; I study how systems work—whether it’s a biological cell or a web server. I am interested in the intersection of deep learning, scientific research, and sustainable productivity.
-        </p>
-        
-        <div class="inline-flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full text-sm text-gray-700">
-            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-            <span class="font-medium">Currently exploring:</span> 
-            <span>Financial structures of MNCs & Freelance Economics.</span>
-        </div>
-    </section>
-
-    <section id="thinking" class="max-w-3xl mx-auto px-6 py-16">
-        <h2 class="section-title">Notes on Thinking</h2>
-        <div class="grid gap-8">
+    <div class="container">
+        <header>
+            <h1>Rohith A.</h1>
+            <p class="tagline">Systems-oriented student | Portfolio & Website Builder | Research-driven learner</p>
             
-            <article class="card">
-                <span class="text-xs font-mono text-gray-400">SYSTEMS</span>
-                <h3 class="text-2xl mt-2 mb-4">The Obsidian vs. RemNote Struggle</h3>
-                <p class="text-gray-600 text-sm mb-4">
+            <a href="Rohith_Portfolio.pdf" download class="btn-download">Download PDF Version 📄</a>
+        </header>
+
+        <section>
+            <h2>About Me</h2>
+            <p>I am a disciplined, systems-first learner who enjoys turning complexity into calm, usable structures. My interests sit at the intersection of biology, technology, and intelligent workflows.</p>
+            <p>Instead of chasing tools, I focus on how and why systems work — and then I build simple, reliable outputs from them.</p>
+        </section>
+
+        <section>
+            <h2>What I Do</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Student Portfolios</h3>
+                    <ul>
+                        <li>Resume-based personal websites</li>
+                        <li>Project & certification showcase</li>
+                        <li>Clean, minimal design (no distractions)</li>
+                        <li>GitHub Pages hosting</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Professional Websites</h3>
+                    <ul>
+                        <li>One-page or two-page websites</li>
+                        <li>Services, contact & WhatsApp integration</li>
+                        <li>Simple layouts focused on trust</li>
+                        <li>Fast setup & easy maintenance</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Selected Projects (Samples)</h2>
+            <div class="card" style="margin-bottom: 20px;">
+                <h3>Student Portfolio Website</h3>
+                <p><strong>Goal:</strong> Help a final-year student present skills clearly.</p>
+                <p><strong>Outcome:</strong> A professional, shareable link suitable for recruiters.</p>
+            </div>
+            <div class="card">
+                <h3>Simple Professional Website</h3>
+                <p><strong>Goal:</strong> Create an online presence for a local professional.</p>
+                <p><strong>Outcome:</strong> A clear, trustworthy website that explains services in seconds.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Tools & Systems</h2>
+            <p>I choose tools intentionally, based on purpose not trends.</p>
+            <ul>
+                <li>Obsidian, Notion, Anki (Learning Systems)</li>
+                <li>Zotero, SciSpace (Research Workflows)</li>
+                <li>GitHub & GitHub Pages (Deployment)</li>
+                <li>n8n (Basic Automation)</li>
+            </ul>
+        </section>
+
+        <section>
+            <div class="quote">
+                "Complexity is easy to create. Clarity takes discipline."
+            </div>
+            <center>
+                <p>📧 beginsroh010@gmail.com</p>
+                <p>📱 +91-8667001366</p>
+            </center>
+        </section>
+    </div>
+
+</body>
+</html>
