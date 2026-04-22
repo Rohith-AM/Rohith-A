@@ -3,241 +3,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rohith A. | Terminal</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>Rohith A. | Systems & Development</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #050505; /* Deep Terminal Black */
-            --term-green: #00ff41; /* Classic Matrix Green */
-            --term-dim: #008f11; /* Dimmed Green */
-            --term-alert: #ff003c; /* Hacker Red for accents */
+            --bg-dark: #0a0a0a;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --text-main: #ededed;
+            --text-muted: #a1a1aa;
+            --accent-glow: #00e599;
+            --gradient-text: linear-gradient(90deg, #00e599, #007acc);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: 'Fira Code', 'Courier New', Courier, monospace;
-            background-color: var(--bg-color);
-            color: var(--term-green);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.7;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        /* Scanline effect for CRT monitor vibe */
-        body::after {
-            content: " ";
-            display: block;
-            position: absolute;
+        /* Glassmorphism Navbar */
+        nav {
+            position: fixed;
             top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 2;
-            background-size: 100% 2px, 3px 100%;
-            pointer-events: none;
+            width: 100%;
+            padding: 20px 40px;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-glow);
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 40px 20px;
-            position: relative;
-            z-index: 3;
+            padding: 120px 20px 60px;
         }
 
-        /* Terminal Prompt Styling */
-        .prompt::before {
-            content: "rohith@ziyal:~$ ";
-            color: var(--term-green);
-            font-weight: bold;
-            text-shadow: 0 0 5px var(--term-green);
-        }
-
-        .blinking-cursor {
-            display: inline-block;
-            width: 10px;
-            height: 1.2em;
-            background-color: var(--term-green);
-            vertical-align: middle;
-            animation: blink 1s step-end infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        /* Header Section */
-        header {
-            margin-bottom: 40px;
-            border-bottom: 1px dashed var(--term-dim);
-            padding-bottom: 20px;
+        /* Typography & Layout */
+        .hero {
+            text-align: center;
+            padding: 80px 0;
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
             margin-bottom: 10px;
-            text-shadow: 0 0 8px var(--term-green);
-            letter-spacing: 2px;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .tagline {
-            font-size: 1rem;
-            color: var(--term-dim);
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 30px;
         }
 
-        /* Sections */
         section {
-            margin-bottom: 40px;
+            margin-bottom: 80px;
         }
 
         h2 {
-            font-size: 1.5rem;
-            color: var(--term-alert);
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-        
-        h2::before {
-            content: "[root@sys]# ./";
-            color: var(--term-dim);
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            display: inline-block;
         }
 
-        /* Cards for Projects */
+        /* Premium Cards */
         .grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media(min-width: 600px) {
-            .grid { grid-template-columns: 1fr 1fr; }
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
         }
 
         .card {
-            background: transparent;
-            padding: 20px;
-            border: 1px solid var(--term-dim);
-            transition: all 0.3s ease;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .card:hover {
-            border-color: var(--term-green);
-            box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
-            transform: translateY(-2px);
+            transform: translateY(-5px);
+            border-color: var(--accent-glow);
+            box-shadow: 0 10px 30px rgba(0, 229, 153, 0.1);
         }
 
-        .card h3 { 
-            margin-top: 0; 
-            border-bottom: 1px solid var(--term-dim);
-            padding-bottom: 5px;
-        }
-        
-        /* Philosophy Quote */
-        .quote {
-            text-align: center;
-            font-style: italic;
-            font-size: 1.1rem;
-            color: var(--term-dim);
-            padding: 20px 0;
-            border: 1px dashed var(--term-dim);
-            margin: 30px 0;
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #fff;
         }
 
-        /* Buttons & Links */
-        a {
-            color: var(--term-green);
-            text-decoration: none;
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
-        a:hover {
-            text-decoration: underline;
-            text-shadow: 0 0 5px var(--term-green);
-        }
-
-        .btn-download {
-            display: inline-block;
-            background-color: transparent;
-            color: var(--term-green);
-            padding: 10px 20px;
-            border: 1px solid var(--term-green);
-            font-weight: bold;
+        /* Skill Pills */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
             margin-top: 20px;
-            transition: all 0.2s;
-            text-transform: uppercase;
         }
 
-        .btn-download:hover {
-            background-color: var(--term-green);
-            color: var(--bg-color);
+        .skill-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            transition: all 0.3s;
         }
 
-        ul { list-style-type: none; padding: 0; }
-        li::before { content: ">"; color: var(--term-alert); margin-right: 10px; font-weight: bold;}
+        .skill-pill:hover {
+            background: rgba(0, 229, 153, 0.1);
+            color: var(--accent-glow);
+            border-color: var(--accent-glow);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background: var(--text-main);
+            color: var(--bg-dark);
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--text-main);
+            border-color: var(--text-main);
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
+
+    <nav>
+        <a href="index.html">← HOME</a>
+        <a href="mailto:beginsroh010@gmail.com">CONTACT</a>
+    </nav>
+
     <div class="container">
-        <header>
-            <div class="prompt">whoami<span class="blinking-cursor"></span></div>
+        
+        <header class="hero fade-in">
             <h1>Rohith A.</h1>
-            <p class="tagline">Builder | Founder, Ziyal | Systems-Oriented Developer</p>
-            <a href="Rohith_Portfolio.pdf" download class="btn-download">wget resume.pdf</a>
+            <p class="tagline">Systems-oriented builder and founder of Ziyal (ழியல்). I turn complexity into calm, usable structures at the intersection of biology and tech.</p>
+            <a href="Rohith_Portfolio.pdf" download class="btn">Download Resume</a>
         </header>
 
-        <section>
-            <h2>Initialize_Profile</h2>
-            <p>I am a disciplined, systems-first builder who enjoys turning complexity into calm, usable structures. Operating at the intersection of biology, technology, and intelligent workflows.</p>
-            <p>Instead of chasing tools, I focus on how and why systems work — keeping an open-source hacker spirit to build simple, reliable outputs.</p>
+        <section class="fade-in">
+            <h2>Philosophy</h2>
+            <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 800px;">
+                Instead of chasing trends, I focus on how and why systems work. Whether it's managing a multi-platform productivity ecosystem or building open-source tools, I believe that complexity is easy to create, but clarity takes discipline.
+            </p>
         </section>
 
-        <section>
-            <h2>Execute_Projects</h2>
+        <section class="fade-in">
+            <h2>Featured Builds</h2>
             <div class="grid">
                 <div class="card">
                     <h3>Bio-Nexus</h3>
-                    <p><strong>Status:</strong> Deployed on Vercel</p>
-                    <p><strong>Description:</strong> An open-source student tool built for high-performance functionality and seamless access.</p>
+                    <p>An open-source student tool designed for high-performance functionality and seamless access. Architected for speed and deployed on modern edge networks.</p>
+                    <div class="skills">
+                        <span class="skill-pill">Vercel</span>
+                        <span class="skill-pill">Open Source</span>
+                        <span class="skill-pill">Web Dev</span>
+                    </div>
                 </div>
                 <div class="card">
                     <h3>Layers of Silence</h3>
-                    <p><strong>Status:</strong> Academic Submission</p>
-                    <p><strong>Description:</strong> An interactive digital storytelling project exploring sociology, deployed via Netlify.</p>
+                    <p>An interactive digital storytelling project exploring sociology through web design. Developed to present complex academic concepts via an engaging UI.</p>
+                    <div class="skills">
+                        <span class="skill-pill">Netlify</span>
+                        <span class="skill-pill">UI/UX</span>
+                        <span class="skill-pill">Storytelling</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section>
-            <h2>System_Dependencies</h2>
-            <p>Tools chosen intentionally, based on purpose not trends:</p>
+        <section class="fade-in">
+            <h2>Tech Stack & Ecosystem</h2>
             <div class="grid">
-                <div>
-                    <ul>
-                        <li>HTML / CSS / R</li>
-                        <li>Vercel / Netlify / GitHub</li>
-                        <li>n8n Automation</li>
-                    </ul>
+                <div class="card">
+                    <h3>Development</h3>
+                    <p>Building clean, responsive, and automated workflows.</p>
+                    <div class="skills">
+                        <span class="skill-pill">HTML/CSS</span>
+                        <span class="skill-pill">R Programming</span>
+                        <span class="skill-pill">n8n Automation</span>
+                        <span class="skill-pill">Apps Script</span>
+                    </div>
                 </div>
-                <div>
-                    <ul>
-                        <li>Obsidian / Tana</li>
-                        <li>Zotero / SciSpace</li>
-                        <li>iNaturalist</li>
-                    </ul>
+                <div class="card">
+                    <h3>Research & Systems</h3>
+                    <p>Maintaining complex digital brains for quantitative biology and academics.</p>
+                    <div class="skills">
+                        <span class="skill-pill">Obsidian / Tana</span>
+                        <span class="skill-pill">Zotero</span>
+                        <span class="skill-pill">iNaturalist</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section>
-            <div class="quote">
-                "Complexity is easy to create. Clarity takes discipline."
-            </div>
-            <div style="text-align: center; margin-top: 30px;">
-                <p><span style="color: var(--term-alert);">[ contact ]</span> beginsroh010@gmail.com</p>
-                <p><span style="color: var(--term-alert);">[ ping ]</span> +91-8667001366</p>
-            </div>
-        </section>
     </div>
+
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((element) => {
+            observer.observe(element);
+        });
+    </script>
 </body>
 </html>
