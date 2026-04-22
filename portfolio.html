@@ -12,18 +12,12 @@
             --text-primary: #f4f4f5;
             --text-secondary: #a1a1aa;
             --accent-primary: #00e599;
-            --accent-secondary: #007acc;
-            --gradient-glow: linear-gradient(135deg, rgba(0, 229, 153, 0.2), rgba(0, 122, 204, 0.2));
             --border-subtle: rgba(255, 255, 255, 0.08);
             --radius-md: 12px;
             --radius-lg: 24px;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -32,391 +26,103 @@
             line-height: 1.6;
             overflow-x: hidden;
             scroll-behavior: smooth;
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(0, 229, 153, 0.03), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(0, 122, 204, 0.03), transparent 25%);
         }
 
         /* Glassmorphism Navbar */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 15px 30px;
-            background: rgba(5, 5, 5, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            position: fixed; top: 0; width: 100%; padding: 15px 30px;
+            background: rgba(5, 5, 5, 0.7); backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-subtle);
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            z-index: 1000; display: flex; justify-content: space-between; align-items: center;
         }
-
-        nav a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--accent-primary);
-        }
+        nav a { color: var(--text-primary); text-decoration: none; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; transition: color 0.3s; }
+        nav a:hover { color: var(--accent-primary); }
 
         .container {
-            max-width: 800px; /* Strictly bounded width for vertical focus */
-            margin: 0 auto;
-            padding: 120px 24px 80px;
-            display: flex;
-            flex-direction: column;
-            gap: 80px; /* Vertical spacing between sections */
+            max-width: 800px; margin: 0 auto; padding: 120px 24px 80px;
+            display: flex; flex-direction: column; gap: 80px;
         }
 
-        /* Typography & Headings */
-        h1 {
-            font-size: clamp(3rem, 8vw, 4.5rem);
-            font-weight: 800;
-            letter-spacing: -2px;
-            line-height: 1.1;
-            margin-bottom: 16px;
-            background: linear-gradient(90deg, var(--text-primary), var(--text-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 32px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        h2::before {
-            content: "";
-            display: block;
-            width: 8px;
-            height: 24px;
-            background: var(--accent-primary);
-            border-radius: 4px;
-        }
-
-        p {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            margin-bottom: 16px;
-        }
-
-        .tagline {
-            font-size: 1.25rem;
-            font-weight: 400;
-            color: var(--accent-primary);
-            margin-bottom: 8px;
-        }
+        /* Typography */
+        h1 { font-size: clamp(3rem, 8vw, 4.5rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 16px; background: linear-gradient(90deg, var(--text-primary), var(--text-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h2 { font-size: 1.8rem; font-weight: 600; margin-bottom: 32px; display: flex; align-items: center; gap: 12px; }
+        h2::before { content: ""; display: block; width: 8px; height: 24px; background: var(--accent-primary); border-radius: 4px; }
+        p { color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 16px; }
+        .tagline { font-size: 1.25rem; font-weight: 400; color: var(--accent-primary); margin-bottom: 8px; }
 
         /* Components */
-        .card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-lg);
-            padding: 32px;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-bottom: 24px; /* Stacked vertically */
-        }
+        .card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 32px; backdrop-filter: blur(10px); transition: all 0.4s ease; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+        .card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-primary), transparent); opacity: 0; transition: opacity 0.4s ease; }
+        .card:hover { transform: translateY(-4px); border-color: rgba(0, 229, 153, 0.3); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4); }
+        .card:hover::before { opacity: 1; }
 
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(0, 229, 153, 0.3);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        /* Timeline / Origin Journey */
-        .timeline {
-            border-left: 2px solid var(--border-subtle);
-            padding-left: 32px;
-            margin-left: 12px;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        .timeline-node {
-            position: relative;
-        }
-
-        .timeline-node::before {
-            content: "";
-            position: absolute;
-            left: -41px;
-            top: 4px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--bg-base);
-            border: 2px solid var(--accent-primary);
-            box-shadow: 0 0 10px rgba(0, 229, 153, 0.4);
-        }
-
-        .timeline-date {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--accent-primary);
-            margin-bottom: 4px;
-            display: block;
-        }
-
-        /* Skills Layout */
-        .skill-group {
-            margin-bottom: 24px;
-        }
+        /* Timeline & Skills */
+        .timeline { border-left: 2px solid var(--border-subtle); padding-left: 32px; margin-left: 12px; display: flex; flex-direction: column; gap: 40px; }
+        .timeline-node { position: relative; }
+        .timeline-node::before { content: ""; position: absolute; left: -41px; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: var(--bg-base); border: 2px solid var(--accent-primary); box-shadow: 0 0 10px rgba(0, 229, 153, 0.4); }
+        .timeline-date { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--accent-primary); margin-bottom: 4px; display: block; }
         
-        .skill-group h4 {
-            color: var(--text-primary);
-            margin-bottom: 12px;
-            font-size: 1rem;
-            opacity: 0.9;
-        }
+        .skill-group { margin-bottom: 24px; }
+        .skill-group h4 { color: var(--text-primary); margin-bottom: 12px; font-size: 1rem; opacity: 0.9; }
+        .pill-container { display: flex; flex-wrap: wrap; gap: 10px; }
+        .pill { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; color: var(--text-secondary); font-family: 'JetBrains Mono', monospace; transition: all 0.3s; }
+        .pill.highlight { border-color: rgba(0, 229, 153, 0.4); color: var(--accent-primary); background: rgba(0, 229, 153, 0.05); }
 
-        .pill-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .pill {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-subtle);
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            font-family: 'JetBrains Mono', monospace;
-            transition: all 0.3s;
-        }
-
-        .pill.highlight {
-            border-color: rgba(0, 229, 153, 0.4);
-            color: var(--accent-primary);
-            background: rgba(0, 229, 153, 0.05);
-        }
-
-        /* Automation Playground */
-        .playground-box {
-            background: #000;
-            border: 1px solid #222;
-            border-radius: var(--radius-md);
-            padding: 24px;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .input-group {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        input[type="text"] {
-            flex: 1;
-            background: #111;
-            border: 1px solid #333;
-            color: var(--accent-primary);
-            padding: 12px 16px;
-            border-radius: 8px;
-            font-family: 'JetBrains Mono', monospace;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        input[type="text"]:focus {
-            border-color: var(--accent-primary);
-        }
-
-        button {
-            background: var(--text-primary);
-            color: var(--bg-base);
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: 'Inter', sans-serif;
-        }
-
-        button:hover {
-            background: var(--accent-primary);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 229, 153, 0.3);
-        }
-
-        .console-output {
-            background: #0a0a0a;
-            border: 1px solid #222;
-            padding: 16px;
-            border-radius: 8px;
-            min-height: 80px;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* Dynamic Compiler Section */
-        .compiler-toggles {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-
-        .toggle-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 8px;
-            border: 1px solid var(--border-subtle);
-        }
-
-        /* Toggle Switch CSS */
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 44px;
-            height: 24px;
-        }
+        /* Sandbox & Toggles */
+        .playground-box { background: #000; border: 1px solid #222; border-radius: var(--radius-md); padding: 24px; font-family: 'JetBrains Mono', monospace; }
+        .input-group { display: flex; gap: 12px; margin-bottom: 16px; }
+        input[type="text"] { flex: 1; background: #111; border: 1px solid #333; color: var(--accent-primary); padding: 12px 16px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; outline: none; }
+        button { background: var(--text-primary); color: var(--bg-base); border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: 'Inter', sans-serif; }
+        button:hover { background: var(--accent-primary); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0, 229, 153, 0.3); }
+        .console-output { background: #0a0a0a; border: 1px solid #222; padding: 16px; border-radius: 8px; min-height: 80px; color: var(--text-secondary); font-size: 0.9rem; }
+        
+        .compiler-toggles { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+        .toggle-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: rgba(255, 255, 255, 0.02); border-radius: 8px; border: 1px solid var(--border-subtle); }
+        .switch { position: relative; display: inline-block; width: 44px; height: 24px; }
         .switch input { opacity: 0; width: 0; height: 0; }
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #333;
-            transition: .4s;
-            border-radius: 24px;
-        }
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 18px; width: 18px;
-            left: 3px; bottom: 3px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #333; transition: .4s; border-radius: 24px; }
+        .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
         input:checked + .slider { background-color: var(--accent-primary); }
         input:checked + .slider:before { transform: translateX(20px); }
 
-        .progress-container {
-            width: 100%;
-            height: 6px;
-            background: #222;
-            border-radius: 4px;
-            margin-top: 24px;
-            overflow: hidden;
-            display: none; /* Hidden by default */
-        }
+        .progress-container { width: 100%; height: 6px; background: #222; border-radius: 4px; margin-top: 24px; overflow: hidden; display: none; }
+        .progress-bar { height: 100%; width: 0%; background: var(--accent-primary); transition: width 0.2s ease; }
+        .status-text { margin-top: 12px; font-size: 0.85rem; color: var(--accent-primary); font-family: 'JetBrains Mono', monospace; text-align: center; display: none; }
 
-        .progress-bar {
-            height: 100%;
-            width: 0%;
-            background: var(--accent-primary);
-            transition: width 0.2s ease;
-        }
+        footer { text-align: center; padding-top: 40px; border-top: 1px solid var(--border-subtle); }
+        .contact-link { display: inline-block; color: var(--text-primary); text-decoration: none; font-size: 1.2rem; font-weight: 600; margin: 8px 0; transition: color 0.3s; }
+        .contact-link:hover { color: var(--accent-primary); }
 
-        .status-text {
-            margin-top: 12px;
-            font-size: 0.85rem;
-            color: var(--accent-primary);
-            font-family: 'JetBrains Mono', monospace;
-            text-align: center;
-            display: none;
-        }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* Footer / Contact */
-        footer {
-            text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid var(--border-subtle);
-        }
-        
-        .contact-link {
-            display: inline-block;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin: 8px 0;
-            transition: color 0.3s;
-        }
-
-        .contact-link:hover {
-            color: var(--accent-primary);
-        }
-
-        /* Scroll Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- NEW ADDITIONS: RAIN, GLASS & BOT --- */
-        #rainCanvas {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: 0; pointer-events: none;
-        }
-        .glass-wrapper {
-            position: relative; z-index: 1; min-height: 100vh;
-            background: rgba(10, 10, 10, 0.4); 
-            backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
-        }
-        #ziyalBot {
-            position: fixed; top: 80%; left: 10%; z-index: 9999; pointer-events: none;
-            transition: top 0.6s ease-in-out, left 0.6s ease-in-out, transform 0.3s ease;
-            transform: translate(-50%, -50%);
-            animation: floatBot 3s ease-in-out infinite;
-        }
+        /* --- BACKGROUND, BOT & GLASS --- */
+        #rainCanvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
+        .glass-wrapper { position: relative; z-index: 1; min-height: 100vh; background: rgba(10, 10, 10, 0.4); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); padding-bottom: 40px;}
+        #ziyalBot { position: fixed; top: 80%; left: 10%; z-index: 9999; pointer-events: none; transition: top 0.6s ease-in-out, left 0.6s ease-in-out, transform 0.3s ease; transform: translate(-50%, -50%); animation: floatBot 3s ease-in-out infinite; cursor: crosshair; }
         .face-left { transform: translate(-50%, -50%) scaleX(-1); }
         .face-right { transform: translate(-50%, -50%) scaleX(1); }
         @keyframes floatBot { 0%, 100% { margin-top: 0px; } 50% { margin-top: -15px; } }
         @keyframes marioJump { 0% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -100px) scale(1.2); } 100% { transform: translate(-50%, -50%) scale(1); } }
         .jump { animation: marioJump 0.5s ease-out; }
+
+        /* --- EXPORT TO PDF (PRINT) STYLES --- */
+        @media print {
+            body { background: white !important; color: black !important; }
+            #rainCanvas, #ziyalBot, nav, .compiler-toggles, button, .playground-box { display: none !important; }
+            .glass-wrapper { background: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+            .container { padding: 0 !important; gap: 30px !important; }
+            h1, h2, h3, p, .tagline { color: black !important; -webkit-text-fill-color: black !important; text-shadow: none !important; }
+            .card { border: 1px solid #ccc !important; background: white !important; box-shadow: none !important; break-inside: avoid; padding: 20px !important; }
+            .pill { border: 1px solid #666 !important; color: black !important; }
+            .pill.highlight { background: #f0f0f0 !important; font-weight: bold; }
+        }
     </style>
 </head>
 <body>
 
     <canvas id="rainCanvas"></canvas>
+    
     <div id="ziyalBot">
         <svg width="60" height="60" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <g style="filter: drop-shadow(0 0 8px var(--accent-primary));">
@@ -430,153 +136,144 @@
             </g>
         </svg>
     </div>
-    
+
     <div class="glass-wrapper">
 
-    <nav>
-        <a href="#home">Ziyal.</a>
-        <a href="#contact">System Ping</a>
-    </nav>
+        <nav>
+            <a href="#home">Ziyal.</a>
+            <a href="#contact">System Ping</a>
+        </nav>
 
-    <div class="container" id="home">
-        
-        <header class="fade-in">
-            <div class="tagline">Founder, Ziyal | Bio-Computational Architect</div>
-            <h1>Rohith A.</h1>
-            <p style="font-size: 1.2rem; max-width: 600px;">
-                I build intelligent workflows and high-performance systems at the intersection of biology and digital infrastructure. Complexity is easy; clarity requires discipline.
-            </p>
-        </header>
-
-        <section class="fade-in">
-            <h2>Origin Architecture</h2>
-            <div class="timeline">
-                <div class="timeline-node">
-                    <span class="timeline-date">Phase 01 : Foundation</span>
-                    <h3 style="color: #fff; margin-bottom: 4px;">Govt Model School, Virudhunagar</h3>
-                    <p>Early academic establishment and structured learning environment.</p>
-                </div>
-                <div class="timeline-node">
-                    <span class="timeline-date">Phase 02 : Core Data</span>
-                    <h3 style="color: #fff; margin-bottom: 4px;">B.Sc. Biology (Hons.)</h3>
-                    <p>Azim Premji University. Mastering quantitative biology, genetics, and complex biological systems.</p>
-                </div>
-                <div class="timeline-node">
-                    <span class="timeline-date">Phase 03 : Execution</span>
-                    <h3 style="color: #fff; margin-bottom: 4px;">Founder, Ziyal & Bio-Nexus</h3>
-                    <p>Leading the development of open-source tools and high-performance digital ecosystems for students.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="fade-in">
-            <h2>System Proficiencies</h2>
-            <div class="card">
-                <div class="skill-group">
-                    <h4>Core Languages</h4>
-                    <div class="pill-container">
-                        <span class="pill highlight">HTML5</span>
-                        <span class="pill highlight">CSS3</span>
-                        <span class="pill highlight">JavaScript (ES6+)</span>
-                        <span class="pill">Python (Compiling...)</span>
-                    </div>
-                </div>
-                <div class="skill-group">
-                    <h4>Advanced Protocols</h4>
-                    <div class="pill-container">
-                        <span class="pill highlight">API Integrations</span>
-                        <span class="pill highlight">Local AI Setup</span>
-                        <span class="pill highlight">AI Prompt Engineering</span>
-                    </div>
-                </div>
-                <div class="skill-group">
-                    <h4>Automation & Workflows</h4>
-                    <div class="pill-container">
-                        <span class="pill highlight">Script-based Mail Automation</span>
-                        <span class="pill">n8n Automation (Compiling...)</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="fade-in">
-            <h2>Deployed Builds</h2>
+        <div class="container" id="home">
             
-            <div class="card">
-                <h3 style="color: #fff; font-size: 1.5rem;">Bio-Nexus</h3>
-                <span class="tagline" style="font-size: 0.9rem; font-family: monospace;">Role: Founder & Developer</span>
-                <p>An open-source digital architecture designed for high-performance functionality. Built to provide seamless access and robust digital tooling for the academic community.</p>
-            </div>
+            <header class="fade-in">
+                <div class="tagline">Founder, Ziyal | Bio-Computational Architect</div>
+                <h1>Rohith A.</h1>
+                <p style="font-size: 1.2rem; max-width: 600px;">
+                    I build intelligent workflows and high-performance systems at the intersection of biology and digital infrastructure. Complexity is easy; clarity requires discipline.
+                </p>
+            </header>
 
-            <div class="card">
-                <h3 style="color: #fff; font-size: 1.5rem;">Layers of Silence</h3>
-                <span class="tagline" style="font-size: 0.9rem; font-family: monospace;">Role: Lead Developer</span>
-                <p>An interactive digital storytelling experience exploring sociology through web design. Developed to translate complex academic theories into an engaging, accessible UI.</p>
-            </div>
-        </section>
-
-        <section class="fade-in">
-            <h2>Prompt Engineering Sandbox</h2>
-            <p>Test the local workflow simulation. Input a biological term to generate a simulated automated response.</p>
-            <div class="playground-box">
-                <div class="input-group">
-                    <input type="text" id="aiInput" placeholder="e.g., 'Mitochondria', 'Genetics'...">
-                    <button onclick="simulateAI()">Execute</button>
-                </div>
-                <div class="console-output" id="aiOutput">
-                    > System ready. Awaiting prompt...
-                </div>
-            </div>
-        </section>
-
-        <section class="fade-in">
-            <h2>Dynamic Profile Compiler</h2>
-            <p>Customize and generate a comprehensive asset package of my capabilities.</p>
-            
-            <div class="card" style="border: 1px solid var(--accent-primary);">
-                <div class="compiler-toggles">
-                    <div class="toggle-row">
-                        <span style="color: #fff; font-weight: 600;">Include Tech Stack Data</span>
-                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+            <section class="fade-in">
+                <h2>Origin Architecture</h2>
+                <div class="timeline">
+                    <div class="timeline-node">
+                        <span class="timeline-date">Phase 01 : Foundation</span>
+                        <h3 style="color: #fff; margin-bottom: 4px;">Govt Model School, Virudhunagar</h3>
+                        <p>Early academic establishment and structured learning environment.</p>
                     </div>
-                    <div class="toggle-row">
-                        <span style="color: #fff; font-weight: 600;">Include Biological Research</span>
-                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                    <div class="timeline-node">
+                        <span class="timeline-date">Phase 02 : Core Data</span>
+                        <h3 style="color: #fff; margin-bottom: 4px;">B.Sc. Biology (Hons.)</h3>
+                        <p>Azim Premji University. Mastering quantitative biology, genetics, and complex biological systems.</p>
                     </div>
-                    <div class="toggle-row">
-                        <span style="color: #fff; font-weight: 600;">Include Ziyal Project Architectures</span>
-                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                    <div class="timeline-node">
+                        <span class="timeline-date">Phase 03 : Execution</span>
+                        <h3 style="color: #fff; margin-bottom: 4px;">Founder, Ziyal & Bio-Nexus</h3>
+                        <p>Leading the development of open-source tools and high-performance digital ecosystems for students.</p>
                     </div>
                 </div>
+            </section>
 
-                <button id="compileBtn" style="width: 100%; padding: 16px; font-size: 1.1rem;">Compile Premium Profile</button>
+            <section class="fade-in">
+                <h2>System Proficiencies</h2>
+                <div class="card">
+                    <div class="skill-group">
+                        <h4>Core Languages</h4>
+                        <div class="pill-container">
+                            <span class="pill highlight">HTML5</span>
+                            <span class="pill highlight">CSS3</span>
+                            <span class="pill highlight">JavaScript (ES6+)</span>
+                            <span class="pill">Python (Compiling...)</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h4>Advanced Protocols</h4>
+                        <div class="pill-container">
+                            <span class="pill highlight">API Integrations</span>
+                            <span class="pill highlight">Local AI Setup</span>
+                            <span class="pill highlight">AI Prompt Engineering</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h4>Automation & Workflows</h4>
+                        <div class="pill-container">
+                            <span class="pill highlight">Script-based Mail Automation</span>
+                            <span class="pill">n8n Automation (Compiling...)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="fade-in">
+                <h2>Deployed Builds</h2>
+                <div class="card">
+                    <h3 style="color: #fff; font-size: 1.5rem;">Bio-Nexus</h3>
+                    <span class="tagline" style="font-size: 0.9rem; font-family: monospace;">Role: Founder & Developer</span>
+                    <p>An open-source digital architecture designed for high-performance functionality. Built to provide seamless access and robust digital tooling for the academic community.</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: #fff; font-size: 1.5rem;">Layers of Silence</h3>
+                    <span class="tagline" style="font-size: 0.9rem; font-family: monospace;">Role: Lead Developer</span>
+                    <p>An interactive digital storytelling experience exploring sociology through web design. Developed to translate complex academic theories into an engaging, accessible UI.</p>
+                </div>
+            </section>
+
+            <section class="fade-in">
+                <h2>Prompt Engineering Sandbox</h2>
+                <p>Test the local workflow simulation. Input a biological term to generate a simulated automated response.</p>
+                <div class="playground-box">
+                    <div class="input-group">
+                        <input type="text" id="aiInput" placeholder="e.g., 'Mitochondria', 'Genetics'...">
+                        <button onclick="simulateAI()">Execute</button>
+                    </div>
+                    <div class="console-output" id="aiOutput">
+                        > System ready. Awaiting prompt...
+                    </div>
+                </div>
+            </section>
+
+            <section class="fade-in">
+                <h2>Dynamic Profile Compiler</h2>
+                <p>Customize and generate a comprehensive asset package of my capabilities.</p>
                 
-                <div class="progress-container" id="progContainer">
-                    <div class="progress-bar" id="progBar"></div>
+                <div class="card" style="border: 1px solid var(--accent-primary);">
+                    <div class="compiler-toggles">
+                        <div class="toggle-row">
+                            <span style="color: #fff; font-weight: 600;">Include Tech Stack Data</span>
+                            <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                        </div>
+                        <div class="toggle-row">
+                            <span style="color: #fff; font-weight: 600;">Include Biological Research</span>
+                            <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                        </div>
+                        <div class="toggle-row">
+                            <span style="color: #fff; font-weight: 600;">Include Ziyal Project Architectures</span>
+                            <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                        </div>
+                    </div>
+
+                    <button id="compileBtn" style="width: 100%; padding: 16px; font-size: 1.1rem;">Compile Premium Profile</button>
+                    
+                    <div class="progress-container" id="progContainer">
+                        <div class="progress-bar" id="progBar"></div>
+                    </div>
+                    <div class="status-text" id="statusText">Initializing sequence...</div>
                 </div>
-                <div class="status-text" id="statusText">Initializing sequence...</div>
-            </div>
-        </section>
+            </section>
 
-        <footer class="fade-in" id="contact">
-            <h2>Establish Connection</h2>
-            <p>Available for high-level systems architecture and development.</p>
-            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 24px;">
-                <a href="mailto:beginsroh010@gmail.com" class="contact-link">beginsroh010@gmail.com</a>
-                <a href="tel:+918667001366" class="contact-link">+91-8667001366</a>
-            </div>
-        </footer>
-    </div>
-    </div>
+            <footer class="fade-in" id="contact">
+                <h2>Establish Connection</h2>
+                <p>Available for high-level systems architecture and development.</p>
+                <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 24px;">
+                    <a href="mailto:beginsroh010@gmail.com" class="contact-link">beginsroh010@gmail.com</a>
+                    <a href="tel:+918667001366" class="contact-link">+91-8667001366</a>
+                </div>
+            </footer>
 
-    <script>
+        </div> </div> <script>
         // 1. Scroll Reveal Animation
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -585,106 +282,128 @@
                 }
             });
         }, observerOptions);
+        document.querySelectorAll('.fade-in').forEach((element) => { observer.observe(element); });
 
-        document.querySelectorAll('.fade-in').forEach((element) => {
-            observer.observe(element);
-        });
-
-        // 2. Automation Sandbox Logic
+        // 2. AI Sandbox Logic
         function simulateAI() {
             const input = document.getElementById('aiInput').value;
             const output = document.getElementById('aiOutput');
-            
             if(!input) {
                 output.innerHTML = "<span style='color: #ff3366;'>> Error: Input required for compilation.</span>";
                 return;
             }
-
             output.innerHTML = "<span style='color: #a1a1aa;'>> Processing request via local workflow...</span>";
-            
             setTimeout(() => {
                 output.innerHTML = `<span style='color: var(--accent-primary);'>> [Success]</span> Structural analysis generated for: <strong>${input}</strong>.<br>> Linking biological parameters with computational architecture... Done.`;
             }, 1200);
         }
 
-        // 3. Dynamic Profile Compiler Logic
+        // 3. Dynamic Profile Compiler Logic (@media print trigger)
         document.getElementById('compileBtn').addEventListener('click', function() {
             const btn = this;
             const progContainer = document.getElementById('progContainer');
             const progBar = document.getElementById('progBar');
             const statusText = document.getElementById('statusText');
 
-            // Reset
-            btn.disabled = true;
-            btn.style.opacity = '0.5';
-            progContainer.style.display = 'block';
-            statusText.style.display = 'block';
+            btn.disabled = true; btn.style.opacity = '0.5';
+            progContainer.style.display = 'block'; statusText.style.display = 'block';
             progBar.style.width = '0%';
             
-            let progress = 0;
-            statusText.innerText = "Gathering node assets...";
+            let progress = 0; statusText.innerText = "Gathering node assets...";
 
             const interval = setInterval(() => {
                 progress += Math.random() * 15;
                 if (progress > 100) progress = 100;
-                
                 progBar.style.width = progress + '%';
 
-                if (progress > 30 && progress < 60) {
-                    statusText.innerText = "Structuring data models...";
-                } else if (progress >= 60 && progress < 90) {
-                    statusText.innerText = "Applying style protocols...";
-                } else if (progress >= 100) {
+                if (progress > 30 && progress < 60) { statusText.innerText = "Structuring data models..."; } 
+                else if (progress >= 60 && progress < 90) { statusText.innerText = "Applying style protocols..."; } 
+                else if (progress >= 100) {
                     clearInterval(interval);
                     statusText.innerText = "[ Profile Compiled Successfully ]";
                     statusText.style.color = "#fff";
-                    btn.innerText = "Profile Ready. Check Console.";
+                    btn.innerText = "Generating Document...";
                     
-                    // Simulate a delay, then trigger REAL download
                     setTimeout(() => {
-                        // --- NEW: REAL DOWNLOAD TRIGGER ---
-                        const pdfLink = document.createElement('a');
-                        pdfLink.href = 'Rohith_Portfolio.pdf'; // Indha file unga repo la irukkanum
-                        pdfLink.download = 'Rohith_Portfolio.pdf';
-                        document.body.appendChild(pdfLink);
-                        pdfLink.click();
-                        document.body.removeChild(pdfLink);
-                        // ----------------------------------
-
-                        // Reset the button back to normal
-                        btn.disabled = false;
-                        btn.style.opacity = '1';
+                        // --- TRIGGERS THE DYNAMIC PDF CREATION ---
+                        window.print();
+                        
+                        // Reset after print window opens
+                        btn.disabled = false; btn.style.opacity = '1';
                         btn.innerText = "Compile Premium Profile";
-                        progContainer.style.display = 'none';
-                        statusText.style.display = 'none';
-                    }, 2000); // Changed 4000 to 2000 so you don't wait too long
-        // 4. Rain & Bot Logic
+                        progContainer.style.display = 'none'; statusText.style.display = 'none';
+                    }, 1500);
+                }
+            }, 300);
+        });
+
+        // 4. Bio-Neural Network Logic (Replaces Rain)
         const canvas = document.getElementById('rainCanvas');
         const ctx = canvas.getContext('2d');
-        let width, height, drops;
+        let width, height, particles;
 
-        function initRain() {
-            width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; drops = [];
-            for (let i = 0; i < 100; i++) {
-                drops.push({ x: Math.random() * width, y: Math.random() * height, length: Math.random() * 20 + 10, speed: Math.random() * 5 + 5 });
+        function initNetwork() {
+            width = canvas.width = window.innerWidth; 
+            height = canvas.height = window.innerHeight; 
+            particles = [];
+            // Create 80 floating nodes
+            for (let i = 0; i < 80; i++) {
+                particles.push({ 
+                    x: Math.random() * width, 
+                    y: Math.random() * height, 
+                    vx: (Math.random() - 0.5) * 1.5, // Velocity X
+                    vy: (Math.random() - 0.5) * 1.5, // Velocity Y
+                    radius: Math.random() * 2 + 1 
+                });
             }
         }
-        function drawRain() {
-            ctx.clearRect(0, 0, width, height); ctx.strokeStyle = 'rgba(0, 229, 153, 0.9)'; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
-            for (let i = 0; i < drops.length; i++) {
-                let p = drops[i];
-                ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p.x, p.y + p.length); ctx.stroke();
-                p.y += p.speed;
-                if (p.y > height) { p.y = -p.length; p.x = Math.random() * width; }
-            }
-            requestAnimationFrame(drawRain);
-        }
-        window.addEventListener('resize', initRain); initRain(); drawRain();
 
+        function drawNetwork() {
+            ctx.clearRect(0, 0, width, height); 
+            ctx.fillStyle = 'rgba(0, 229, 153, 0.8)'; // Node color
+            ctx.strokeStyle = 'rgba(0, 229, 153, 0.15)'; // Connection line color
+            ctx.lineWidth = 1;
+
+            for (let i = 0; i < particles.length; i++) {
+                let p = particles[i];
+                // Move the node
+                p.x += p.vx; 
+                p.y += p.vy;
+
+                // Bounce off edges smoothly
+                if (p.x < 0 || p.x > width) p.vx *= -1;
+                if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                // Draw the node
+                ctx.beginPath(); 
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); 
+                ctx.fill();
+
+                // Connect to nearby nodes
+                for (let j = i + 1; j < particles.length; j++) {
+                    let p2 = particles[j];
+                    let dist = Math.sqrt(Math.pow(p.x - p2.x, 2) + Math.pow(p.y - p2.y, 2));
+                    
+                    // If nodes are close enough, draw a line
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(drawNetwork);
+        }
+        window.addEventListener('resize', initNetwork); 
+        initNetwork(); 
+        drawNetwork();
+
+        // 5. Ziyal Bot Logic
         const bot = document.getElementById('ziyalBot');
         document.addEventListener('click', function(e) {
-            // Ignore clicks on buttons/toggles so they still work normally
-            if(e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT' || e.target.tagName === 'A') return; 
+            // Don't follow clicks on buttons, inputs, or links
+            if(e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT' || e.target.tagName === 'A' || e.target.closest('.switch')) return; 
             
             const clickX = e.clientX; const clickY = e.clientY;
             const botRect = bot.getBoundingClientRect(); const currentX = botRect.left + (botRect.width / 2);
