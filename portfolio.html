@@ -399,7 +399,7 @@
         .glass-wrapper {
             position: relative; z-index: 1; min-height: 100vh;
             background: rgba(10, 10, 10, 0.4); 
-            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
         }
         #ziyalBot {
             position: fixed; top: 80%; left: 10%; z-index: 9999; pointer-events: none;
@@ -640,17 +640,24 @@
                     statusText.style.color = "#fff";
                     btn.innerText = "Profile Ready. Check Console.";
                     
-                    // Simulate a download action after a short delay
+                    // Simulate a delay, then trigger REAL download
                     setTimeout(() => {
+                        // --- NEW: REAL DOWNLOAD TRIGGER ---
+                        const pdfLink = document.createElement('a');
+                        pdfLink.href = 'Rohith_Portfolio.pdf'; // Indha file unga repo la irukkanum
+                        pdfLink.download = 'Rohith_Portfolio.pdf';
+                        document.body.appendChild(pdfLink);
+                        pdfLink.click();
+                        document.body.removeChild(pdfLink);
+                        // ----------------------------------
+
+                        // Reset the button back to normal
                         btn.disabled = false;
                         btn.style.opacity = '1';
                         btn.innerText = "Compile Premium Profile";
                         progContainer.style.display = 'none';
                         statusText.style.display = 'none';
-                    }, 4000);
-                }
-            }, 300);
-        });
+                    }, 2000); // Changed 4000 to 2000 so you don't wait too long
         // 4. Rain & Bot Logic
         const canvas = document.getElementById('rainCanvas');
         const ctx = canvas.getContext('2d');
@@ -663,7 +670,7 @@
             }
         }
         function drawRain() {
-            ctx.clearRect(0, 0, width, height); ctx.strokeStyle = 'rgba(0, 229, 153, 0.3)'; ctx.lineWidth = 1.5; ctx.lineCap = 'round';
+            ctx.clearRect(0, 0, width, height); ctx.strokeStyle = 'rgba(0, 229, 153, 0.9)'; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
             for (let i = 0; i < drops.length; i++) {
                 let p = drops[i];
                 ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p.x, p.y + p.length); ctx.stroke();
