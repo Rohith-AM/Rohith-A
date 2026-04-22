@@ -390,9 +390,48 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* --- NEW ADDITIONS: RAIN, GLASS & BOT --- */
+        #rainCanvas {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: 0; pointer-events: none;
+        }
+        .glass-wrapper {
+            position: relative; z-index: 1; min-height: 100vh;
+            background: rgba(10, 10, 10, 0.4); 
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+        }
+        #ziyalBot {
+            position: fixed; top: 80%; left: 10%; z-index: 9999; pointer-events: none;
+            transition: top 0.6s ease-in-out, left 0.6s ease-in-out, transform 0.3s ease;
+            transform: translate(-50%, -50%);
+            animation: floatBot 3s ease-in-out infinite;
+        }
+        .face-left { transform: translate(-50%, -50%) scaleX(-1); }
+        .face-right { transform: translate(-50%, -50%) scaleX(1); }
+        @keyframes floatBot { 0%, 100% { margin-top: 0px; } 50% { margin-top: -15px; } }
+        @keyframes marioJump { 0% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -100px) scale(1.2); } 100% { transform: translate(-50%, -50%) scale(1); } }
+        .jump { animation: marioJump 0.5s ease-out; }
     </style>
 </head>
 <body>
+
+    <canvas id="rainCanvas"></canvas>
+    <div id="ziyalBot">
+        <svg width="60" height="60" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <g style="filter: drop-shadow(0 0 8px var(--accent-primary));">
+                <path d="M 20 40 Q 50 -10, 80 40 Q 80 80, 50 90 Q 20 80, 20 40 Z" fill="rgba(10, 10, 10, 0.9)" stroke="var(--accent-primary)" stroke-width="4"/>
+                <rect x="35" y="35" width="30" height="12" rx="4" fill="#050505" stroke="var(--accent-primary)" stroke-width="2"/>
+                <circle cx="43" cy="41" r="3" fill="var(--accent-primary)">
+                    <animate attributeName="opacity" values="1;0.1;1" dur="2s" repeatCount="indefinite" />
+                </circle>
+                <line x1="50" y1="22" x2="50" y2="8" stroke="var(--accent-primary)" stroke-width="3"/>
+                <circle cx="50" cy="8" r="4" fill="var(--accent-primary)"/>
+            </g>
+        </svg>
+    </div>
+    
+    <div class="glass-wrapper">
 
     <nav>
         <a href="#home">Ziyal.</a>
@@ -527,7 +566,7 @@
                 <a href="tel:+918667001366" class="contact-link">+91-8667001366</a>
             </div>
         </footer>
-
+    </div>
     </div>
 
     <script>
@@ -611,6 +650,43 @@
                     }, 4000);
                 }
             }, 300);
+        });
+        // 4. Rain & Bot Logic
+        const canvas = document.getElementById('rainCanvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, drops;
+
+        function initRain() {
+            width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; drops = [];
+            for (let i = 0; i < 100; i++) {
+                drops.push({ x: Math.random() * width, y: Math.random() * height, length: Math.random() * 20 + 10, speed: Math.random() * 5 + 5 });
+            }
+        }
+        function drawRain() {
+            ctx.clearRect(0, 0, width, height); ctx.strokeStyle = 'rgba(0, 229, 153, 0.3)'; ctx.lineWidth = 1.5; ctx.lineCap = 'round';
+            for (let i = 0; i < drops.length; i++) {
+                let p = drops[i];
+                ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p.x, p.y + p.length); ctx.stroke();
+                p.y += p.speed;
+                if (p.y > height) { p.y = -p.length; p.x = Math.random() * width; }
+            }
+            requestAnimationFrame(drawRain);
+        }
+        window.addEventListener('resize', initRain); initRain(); drawRain();
+
+        const bot = document.getElementById('ziyalBot');
+        document.addEventListener('click', function(e) {
+            // Ignore clicks on buttons/toggles so they still work normally
+            if(e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT' || e.target.tagName === 'A') return; 
+            
+            const clickX = e.clientX; const clickY = e.clientY;
+            const botRect = bot.getBoundingClientRect(); const currentX = botRect.left + (botRect.width / 2);
+            
+            if (clickX < currentX) { bot.classList.add('face-left'); bot.classList.remove('face-right'); } 
+            else { bot.classList.add('face-right'); bot.classList.remove('face-left'); }
+            
+            bot.style.left = clickX + 'px'; bot.style.top = clickY + 'px';
+            setTimeout(() => { bot.classList.add('jump'); setTimeout(() => { bot.classList.remove('jump'); }, 500); }, 400); 
         });
     </script>
 </body>
