@@ -387,17 +387,18 @@
             btn.textContent = 'Running...';
             output.innerHTML = '<span class="thinking">> Querying biological knowledge base...</span>';
 
-            try {
-                const response = await fetch('https://api.anthropic.com/v1/messages', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        model: 'claude-sonnet-4-20250514',
-                        max_tokens: 1000,
-                        system: "You are a biology expert assistant embedded in a portfolio page. Answer biology questions clearly and concisely. Format your answer in plain text — no markdown, no asterisks, no headers. Keep it under 150 words. Start directly with the answer.",
-                        messages: [{ role: 'user', content: input }]
-                    })
-                });
+           const response = await fetch('https://rohith-a.vercel.app/api/bio-ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    model: 'claude-sonnet-4-20250514',
+                    max_tokens: 1000,
+                    system: "You are a biology expert assistant...",
+                    messages: [{ role: 'user', content: input }]
+                })
+            });
 
                 const data = await response.json();
 
