@@ -17,149 +17,105 @@
             --radius-md: 12px;
             --radius-lg: 24px;
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-base);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        nav {
-            position: fixed; top: 0; width: 100%; padding: 15px 30px;
-            background: rgba(5, 5, 5, 0.7); backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-subtle);
-            z-index: 1000; display: flex; justify-content: space-between; align-items: center;
-        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-base); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; scroll-behavior: smooth; }
+        nav { position: fixed; top: 0; width: 100%; padding: 15px 30px; background: rgba(5,5,5,0.7); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-subtle); z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
         nav a { color: var(--text-primary); text-decoration: none; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; transition: color 0.3s; }
         nav a:hover { color: var(--accent-primary); }
-
-        .container {
-            max-width: 800px; margin: 0 auto; padding: 120px 24px 80px;
-            display: flex; flex-direction: column; gap: 80px;
-        }
-
+        .container { max-width: 800px; margin: 0 auto; padding: 120px 24px 80px; display: flex; flex-direction: column; gap: 80px; }
         h1 { font-size: clamp(3rem, 8vw, 4.5rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 16px; background: linear-gradient(90deg, var(--text-primary), var(--text-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         h2 { font-size: 1.8rem; font-weight: 600; margin-bottom: 32px; display: flex; align-items: center; gap: 12px; }
         h2::before { content: ""; display: block; width: 8px; height: 24px; background: var(--accent-primary); border-radius: 4px; }
         p { color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 16px; }
         .tagline { font-size: 1.25rem; font-weight: 400; color: var(--accent-primary); margin-bottom: 8px; }
-
         .card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 32px; backdrop-filter: blur(10px); transition: all 0.4s ease; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
         .card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-primary), transparent); opacity: 0; transition: opacity 0.4s ease; }
-        .card:hover { transform: translateY(-4px); border-color: rgba(0, 229, 153, 0.3); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4); }
+        .card:hover { transform: translateY(-4px); border-color: rgba(0,229,153,0.3); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
         .card:hover::before { opacity: 1; }
-
         .timeline { border-left: 2px solid var(--border-subtle); padding-left: 32px; margin-left: 12px; display: flex; flex-direction: column; gap: 40px; }
         .timeline-node { position: relative; }
-        .timeline-node::before { content: ""; position: absolute; left: -41px; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: var(--bg-base); border: 2px solid var(--accent-primary); box-shadow: 0 0 10px rgba(0, 229, 153, 0.4); }
+        .timeline-node::before { content: ""; position: absolute; left: -41px; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: var(--bg-base); border: 2px solid var(--accent-primary); box-shadow: 0 0 10px rgba(0,229,153,0.4); }
         .timeline-date { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--accent-primary); margin-bottom: 4px; display: block; }
-
         .skill-group { margin-bottom: 24px; }
         .skill-group h4 { color: var(--text-primary); margin-bottom: 12px; font-size: 1rem; opacity: 0.9; }
         .pill-container { display: flex; flex-wrap: wrap; gap: 10px; }
-        .pill { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; color: var(--text-secondary); font-family: 'JetBrains Mono', monospace; transition: all 0.3s; }
-        .pill.highlight { border-color: rgba(0, 229, 153, 0.4); color: var(--accent-primary); background: rgba(0, 229, 153, 0.05); }
-
-        /* Project cards */
-        .project-tag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(0, 229, 153, 0.3); color: var(--accent-primary); background: rgba(0, 229, 153, 0.05); margin-right: 6px; margin-bottom: 6px; }
-        .project-link { display: inline-flex; align-items: center; gap: 6px; color: var(--accent-primary); text-decoration: none; font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; border: 1px solid rgba(0, 229, 153, 0.3); padding: 6px 14px; border-radius: 8px; transition: all 0.3s; margin-top: 4px; }
-        .project-link:hover { background: rgba(0, 229, 153, 0.1); transform: translateY(-1px); }
+        .pill { background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; color: var(--text-secondary); font-family: 'JetBrains Mono', monospace; transition: all 0.3s; }
+        .pill.highlight { border-color: rgba(0,229,153,0.4); color: var(--accent-primary); background: rgba(0,229,153,0.05); }
+        .project-tag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(0,229,153,0.3); color: var(--accent-primary); background: rgba(0,229,153,0.05); margin-right: 6px; margin-bottom: 6px; }
+        .project-link { display: inline-flex; align-items: center; gap: 6px; color: var(--accent-primary); text-decoration: none; font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; border: 1px solid rgba(0,229,153,0.3); padding: 6px 14px; border-radius: 8px; transition: all 0.3s; margin-top: 4px; }
+        .project-link:hover { background: rgba(0,229,153,0.1); transform: translateY(-1px); }
         .project-status { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 8px; }
-        .status-live { background: rgba(0, 229, 153, 0.1); border: 1px solid rgba(0, 229, 153, 0.3); color: var(--accent-primary); }
-        .status-wip { background: rgba(255, 165, 0, 0.1); border: 1px solid rgba(255, 165, 0, 0.3); color: #ffa500; }
-
-        /* AI Sandbox */
+        .status-live { background: rgba(0,229,153,0.1); border: 1px solid rgba(0,229,153,0.3); color: var(--accent-primary); }
+        .status-wip { background: rgba(255,165,0,0.1); border: 1px solid rgba(255,165,0,0.3); color: #ffa500; }
         .playground-box { background: #000; border: 1px solid #222; border-radius: var(--radius-md); padding: 24px; font-family: 'JetBrains Mono', monospace; }
         .input-group { display: flex; gap: 12px; margin-bottom: 16px; }
         input[type="text"] { flex: 1; background: #111; border: 1px solid #333; color: var(--accent-primary); padding: 12px 16px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; outline: none; font-size: 0.9rem; }
-        input[type="text"]:focus { border-color: rgba(0, 229, 153, 0.5); }
+        input[type="text"]:focus { border-color: rgba(0,229,153,0.5); }
         button.exec-btn { background: var(--text-primary); color: var(--bg-base); border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: 'Inter', sans-serif; white-space: nowrap; }
-        button.exec-btn:hover:not(:disabled) { background: var(--accent-primary); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0, 229, 153, 0.3); }
+        button.exec-btn:hover:not(:disabled) { background: var(--accent-primary); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,229,153,0.3); }
         button.exec-btn:disabled { opacity: 0.5; cursor: not-allowed; }
         .console-output { background: #0a0a0a; border: 1px solid #222; padding: 16px; border-radius: 8px; min-height: 100px; color: var(--text-secondary); font-size: 0.88rem; line-height: 1.7; white-space: pre-wrap; word-break: break-word; }
-        .console-output .success { color: var(--accent-primary); }
-        .console-output .error { color: #ff3366; }
-        .console-output .thinking { color: #888; animation: blink 1s infinite; }
+        .success { color: var(--accent-primary); }
+        .error-text { color: #ff3366; }
         @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .thinking { color: #888; animation: blink 1s infinite; }
         .sandbox-note { font-size: 0.78rem; color: #555; margin-top: 10px; text-align: right; }
-
-        /* Certifications */
         .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
         .cert-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px; transition: all 0.3s; }
-        .cert-card:hover { border-color: rgba(0, 229, 153, 0.3); background: rgba(0, 229, 153, 0.03); }
-        .cert-card .cert-issuer { font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; color: var(--accent-primary); margin-bottom: 6px; }
-        .cert-card .cert-name { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
-        .cert-card .cert-status { font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; color: #888; }
-        .cert-card .cert-status.pending { color: #ffa500; }
-
+        .cert-card:hover { border-color: rgba(0,229,153,0.3); background: rgba(0,229,153,0.03); }
+        .cert-issuer { font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; color: var(--accent-primary); margin-bottom: 6px; }
+        .cert-name { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+        .cert-status { font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; color: #888; }
         footer { text-align: center; padding-top: 40px; border-top: 1px solid var(--border-subtle); }
         .contact-link { display: inline-block; color: var(--text-primary); text-decoration: none; font-size: 1.2rem; font-weight: 600; margin: 8px 0; transition: color 0.3s; }
         .contact-link:hover { color: var(--accent-primary); }
-
+        /* FIXED: fade-in starts visible, animates in smoothly */
         .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
-
         #rainCanvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
-        .glass-wrapper { position: relative; z-index: 1; min-height: 100vh; background: rgba(10, 10, 10, 0.4); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); padding-bottom: 40px; }
-        #ziyalBot { position: fixed; top: 80%; left: 10%; z-index: 9999; pointer-events: none; transition: top 0.6s ease-in-out, left 0.6s ease-in-out, transform 0.3s ease; transform: translate(-50%, -50%); animation: floatBot 3s ease-in-out infinite; cursor: crosshair; }
-        .face-left { transform: translate(-50%, -50%) scaleX(-1) !important; }
-        .face-right { transform: translate(-50%, -50%) scaleX(1) !important; }
-        @keyframes floatBot { 0%, 100% { margin-top: 0px; } 50% { margin-top: -15px; } }
-        @keyframes marioJump { 0% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -100px) scale(1.2); } 100% { transform: translate(-50%, -50%) scale(1); } }
+        .glass-wrapper { position: relative; z-index: 1; min-height: 100vh; background: rgba(10,10,10,0.4); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); padding-bottom: 40px; }
+        #ziyalBot { position: fixed; top: 80%; left: 10%; z-index: 9999; pointer-events: none; transition: top 0.6s ease-in-out, left 0.6s ease-in-out; transform: translate(-50%,-50%); animation: floatBot 3s ease-in-out infinite; }
+        @keyframes floatBot { 0%,100%{margin-top:0px} 50%{margin-top:-15px} }
+        @keyframes marioJump { 0%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-100px) scale(1.2)} 100%{transform:translate(-50%,-50%) scale(1)} }
+        .face-left { transform: translate(-50%,-50%) scaleX(-1) !important; }
+        .face-right { transform: translate(-50%,-50%) scaleX(1) !important; }
         .jump { animation: marioJump 0.5s ease-out !important; }
-
         @media print {
             body { background: white !important; color: black !important; }
             #rainCanvas, #ziyalBot, nav, .playground-box, .sandbox-note { display: none !important; }
-            .glass-wrapper { background: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+            .glass-wrapper { background: none !important; backdrop-filter: none !important; }
             .container { padding: 0 !important; gap: 30px !important; }
             h1, h2, h3, p, .tagline { color: black !important; -webkit-text-fill-color: black !important; }
             .card { border: 1px solid #ccc !important; background: white !important; box-shadow: none !important; break-inside: avoid; padding: 20px !important; }
             .pill { border: 1px solid #666 !important; color: black !important; }
             .pill.highlight { background: #f0f0f0 !important; font-weight: bold; }
-            .project-tag, .project-status { border: 1px solid #aaa !important; color: #333 !important; background: #f5f5f5 !important; }
-            .cert-card { border: 1px solid #ccc !important; background: white !important; }
         }
     </style>
 </head>
 <body>
-
     <canvas id="rainCanvas"></canvas>
-
     <div id="ziyalBot">
         <svg width="60" height="60" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <g style="filter: drop-shadow(0 0 8px var(--accent-primary));">
                 <path d="M 20 40 Q 50 -10, 80 40 Q 80 80, 50 90 Q 20 80, 20 40 Z" fill="rgba(10,10,10,0.9)" stroke="var(--accent-primary)" stroke-width="4"/>
                 <rect x="35" y="35" width="30" height="12" rx="4" fill="#050505" stroke="var(--accent-primary)" stroke-width="2"/>
-                <circle cx="43" cy="41" r="3" fill="var(--accent-primary)">
-                    <animate attributeName="opacity" values="1;0.1;1" dur="2s" repeatCount="indefinite"/>
-                </circle>
+                <circle cx="43" cy="41" r="3" fill="var(--accent-primary)"><animate attributeName="opacity" values="1;0.1;1" dur="2s" repeatCount="indefinite"/></circle>
                 <line x1="50" y1="22" x2="50" y2="8" stroke="var(--accent-primary)" stroke-width="3"/>
                 <circle cx="50" cy="8" r="4" fill="var(--accent-primary)"/>
             </g>
         </svg>
     </div>
-
     <div class="glass-wrapper">
-
         <nav>
             <a href="#home">Ziyal.</a>
             <a href="#contact">System Ping</a>
         </nav>
-
         <div class="container" id="home">
 
             <header class="fade-in">
                 <div class="tagline">Ziyal | Bio-Computational Architect</div>
                 <h1>Rohith A.</h1>
-                <p style="font-size: 1.2rem; max-width: 600px;">
-                    I build intelligent workflows and open-source systems at the intersection of biology and digital infrastructure. Complexity is easy; clarity requires discipline.
-                </p>
+                <p style="font-size:1.2rem; max-width:600px;">I build intelligent workflows and open-source systems at the intersection of biology and digital infrastructure. Complexity is easy; clarity requires discipline.</p>
             </header>
 
             <section class="fade-in">
@@ -230,126 +186,71 @@
 
             <section class="fade-in">
                 <h2>Deployed Builds</h2>
-
                 <div class="card">
-                    <div>
-                        <span class="project-status status-live">● LIVE</span>
-                        <h3 style="font-size:1.4rem; margin-bottom:4px;">
-                            <a href="https://bio-nexus-teal.vercel.app" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">Bio-Nexus</a>
-                        </h3>
+                    <div><span class="project-status status-live">● LIVE</span>
+                        <h3 style="font-size:1.4rem; margin-bottom:4px;"><a href="https://bio-nexus-teal.vercel.app" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">Bio-Nexus</a></h3>
                         <span class="tagline" style="font-size:0.85rem; font-family:monospace;">Founder & Developer</span>
                     </div>
                     <p>Open-source bioinformatics web platform with 5+ working tools — DNA sequence analysis, molecular structure viewing (3Dmol.js), species exploration (GBIF), PubMed research search, and biodiversity statistics. Long-term vision: 100+ tools with an integrated biology-specific AI.</p>
-                    <div>
-                        <span class="project-tag">GBIF API</span>
-                        <span class="project-tag">NCBI</span>
-                        <span class="project-tag">3Dmol.js</span>
-                        <span class="project-tag">Vercel</span>
-                        <span class="project-tag">Open Source</span>
-                    </div>
+                    <div><span class="project-tag">GBIF API</span><span class="project-tag">NCBI</span><span class="project-tag">3Dmol.js</span><span class="project-tag">Vercel</span><span class="project-tag">Open Source</span></div>
                     <a href="https://bio-nexus-teal.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">↗ Visit Bio-Nexus</a>
                 </div>
-
                 <div class="card">
-                    <div>
-                        <span class="project-status status-live">● LIVE</span>
-                        <h3 style="font-size:1.4rem; margin-bottom:4px;">
-                            <a href="https://biosheet-nine.vercel.app/" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">BioSheet</a>
-                        </h3>
+                    <div><span class="project-status status-live">● LIVE</span>
+                        <h3 style="font-size:1.4rem; margin-bottom:4px;"><a href="https://biosheet-nine.vercel.app/" target="_blank" rel="noopener noreferrer" style="color:#fff; text-decoration:none;">BioSheet</a></h3>
                         <span class="tagline" style="font-size:0.85rem; font-family:monospace;">Founder & Developer</span>
                     </div>
                     <p>A standalone R-powered biology spreadsheet app built on Univer.js + Pyodide. Implements Shannon Index, Simpson Index, Hardy-Weinberg Equilibrium, Chi-Square, and Welch's T-Test — all computed client-side, no server needed.</p>
-                    <div>
-                        <span class="project-tag">React / Vite</span>
-                        <span class="project-tag">Pyodide</span>
-                        <span class="project-tag">Univer.js</span>
-                        <span class="project-tag">R in Browser</span>
-                    </div>
+                    <div><span class="project-tag">React / Vite</span><span class="project-tag">Pyodide</span><span class="project-tag">Univer.js</span><span class="project-tag">R in Browser</span></div>
                     <a href="https://biosheet-nine.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">↗ Visit BioSheet</a>
                 </div>
-
                 <div class="card">
-                    <div>
-                        <span class="project-status status-live">● LIVE</span>
+                    <div><span class="project-status status-live">● LIVE</span>
                         <h3 style="font-size:1.4rem; margin-bottom:4px;">Project Living Science</h3>
                         <span class="tagline" style="font-size:0.85rem; font-family:monospace;">Founder & Developer</span>
                     </div>
-                    <p>An interactive biology concept map — 3,125 nodes across 6 levels and 15 domains, rendered via D3.js force simulation on HTML5 Canvas. Features Wikipedia description fetching and an AI chat panel with node-context injection. Built as a standalone HTML file.</p>
-                    <div>
-                        <span class="project-tag">D3.js</span>
-                        <span class="project-tag">HTML5 Canvas</span>
-                        <span class="project-tag">3125 Nodes</span>
-                        <span class="project-tag">AI Chat</span>
-                    </div>
+                    <p>An interactive biology concept map — 3,125 nodes across 6 levels and 15 domains, rendered via D3.js force simulation on HTML5 Canvas. Features Wikipedia description fetching and an AI chat panel with node-context injection.</p>
+                    <div><span class="project-tag">D3.js</span><span class="project-tag">HTML5 Canvas</span><span class="project-tag">3125 Nodes</span><span class="project-tag">AI Chat</span></div>
                 </div>
-
                 <div class="card">
-                    <div>
-                        <span class="project-status status-live">● LIVE — v1.0.2</span>
+                    <div><span class="project-status status-live">● LIVE — v1.0.2</span>
                         <h3 style="font-size:1.4rem; margin-bottom:4px;">NexoraDocViewer</h3>
                         <span class="tagline" style="font-size:0.85rem; font-family:monospace;">Creator & Maintainer</span>
                     </div>
                     <p>A Zotero 7/8 plugin enabling native DOCX and CSV reading inside Zotero — without external apps. Built to WebExtension format compliance, fixing chrome:// URI handling and empty viewer issues present in earlier builds.</p>
-                    <div>
-                        <span class="project-tag">Zotero Plugin</span>
-                        <span class="project-tag">WebExtension</span>
-                        <span class="project-tag">JavaScript</span>
-                        <span class="project-tag">Open Source</span>
-                    </div>
+                    <div><span class="project-tag">Zotero Plugin</span><span class="project-tag">WebExtension</span><span class="project-tag">JavaScript</span><span class="project-tag">Open Source</span></div>
                 </div>
-
                 <div class="card">
-                    <div>
-                        <span class="project-status status-wip">◐ ARCHIVED</span>
+                    <div><span class="project-status status-wip">◐ ARCHIVED</span>
                         <h3 style="font-size:1.4rem; margin-bottom:4px;">Layers of Silence</h3>
                         <span class="tagline" style="font-size:0.85rem; font-family:monospace;">Lead Developer</span>
                     </div>
                     <p>An interactive digital storytelling experience exploring sociology through web design. Developed to translate complex academic theories into an engaging, accessible UI.</p>
-                    <div>
-                        <span class="project-tag">HTML/CSS/JS</span>
-                        <span class="project-tag">Storytelling</span>
-                        <span class="project-tag">Sociology</span>
-                    </div>
+                    <div><span class="project-tag">HTML/CSS/JS</span><span class="project-tag">Storytelling</span><span class="project-tag">Sociology</span></div>
                 </div>
             </section>
 
             <section class="fade-in">
                 <h2>Certifications</h2>
                 <div class="cert-grid">
-                    <div class="cert-card">
-                        <div class="cert-issuer">GitHub / Microsoft</div>
-                        <div class="cert-name">GitHub Foundations (GH-900)</div>
-                        <div class="cert-status pending">⏳ In Progress</div>
-                    </div>
-                    <div class="cert-card">
-                        <div class="cert-issuer">Microsoft</div>
-                        <div class="cert-name">MLSA — Student Ambassador</div>
-                        <div class="cert-status pending">⏳ In Progress</div>
-                    </div>
-                    <div class="cert-card">
-                        <div class="cert-issuer">GitHub</div>
-                        <div class="cert-name">GitHub Copilot Student</div>
-                        <div class="cert-status" style="color:var(--accent-primary);">✓ Active</div>
-                    </div>
-                    <div class="cert-card">
-                        <div class="cert-issuer">GitHub</div>
-                        <div class="cert-name">Student Developer Pack</div>
-                        <div class="cert-status" style="color:var(--accent-primary);">✓ Active</div>
-                    </div>
+                    <div class="cert-card"><div class="cert-issuer">GitHub / Microsoft</div><div class="cert-name">GitHub Foundations (GH-900)</div><div class="cert-status" style="color:#ffa500;">⏳ In Progress</div></div>
+                    <div class="cert-card"><div class="cert-issuer">Microsoft</div><div class="cert-name">MLSA — Student Ambassador</div><div class="cert-status" style="color:#ffa500;">⏳ In Progress</div></div>
+                    <div class="cert-card"><div class="cert-issuer">GitHub</div><div class="cert-name">GitHub Copilot Student</div><div class="cert-status" style="color:var(--accent-primary);">✓ Active</div></div>
+                    <div class="cert-card"><div class="cert-issuer">GitHub</div><div class="cert-name">Student Developer Pack</div><div class="cert-status" style="color:var(--accent-primary);">✓ Active</div></div>
                 </div>
             </section>
 
             <section class="fade-in">
                 <h2>Biology AI Sandbox</h2>
-                <p>Ask any biology question — powered by Claude.</p>
+                <p>Ask any biology question — powered by Gemini. Real answers, not a simulation.</p>
                 <div class="playground-box">
                     <div class="input-group">
-                        <input type="text" id="aiInput" placeholder="e.g., How does CRISPR work? What is the Hardy-Weinberg principle?" />
+                        <input type="text" id="aiInput" placeholder="e.g., How does CRISPR work? What is Hardy-Weinberg principle?"/>
                         <button class="exec-btn" id="execBtn" onclick="runBioQuery()">Execute</button>
                     </div>
                     <div class="console-output" id="aiOutput"><span style="color:#444;">> System ready. Ask a biology question...</span></div>
                 </div>
-                <p class="sandbox-note">Powered by Claude (Anthropic) · claude-sonnet-4-20250514</p>
+                <p class="sandbox-note">Powered by Gemini · rohith-a.vercel.app/api/bio-ask</p>
             </section>
 
             <footer class="fade-in" id="contact">
@@ -364,24 +265,30 @@
     </div>
 
     <script>
-        // Scroll reveal
+        // FIXED: Scroll reveal with fallback timer
         const revealAll = () => document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-    });
-}, { threshold: 0.05 });
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-setTimeout(revealAll, 1000);
+        
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+                });
+            }, { threshold: 0.05 });
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+            // Fallback: reveal all after 1s in case observer doesn't fire
+            setTimeout(revealAll, 1000);
+        } else {
+            revealAll();
+        }
 
-        // Bio AI Sandbox — real Claude API call
+        // FIXED: Bio AI Sandbox with proper try/catch
         async function runBioQuery() {
             const input = document.getElementById('aiInput').value.trim();
             const output = document.getElementById('aiOutput');
             const btn = document.getElementById('execBtn');
 
             if (!input) {
-                output.innerHTML = '<span class="error">> Error: Input required. Ask a biology question.</span>';
+                output.innerHTML = '<span class="error-text">> Error: Input required. Ask a biology question.</span>';
                 return;
             }
 
@@ -389,31 +296,29 @@ setTimeout(revealAll, 1000);
             btn.textContent = 'Running...';
             output.innerHTML = '<span class="thinking">> Querying biological knowledge base...</span>';
 
-           const response = await fetch('https://rohith-a.vercel.app/api/bio-ask', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    model: 'claude-sonnet-4-20250514',
-                    max_tokens: 1000,
-                    system: "You are a biology expert assistant...",
-                    messages: [{ role: 'user', content: input }]
-                })
-            });
+            try {
+                const response = await fetch('https://rohith-a.vercel.app/api/bio-ask', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        model: 'gemini-2.0-flash',
+                        max_tokens: 1000,
+                        system: "You are a biology expert assistant. Answer biology questions clearly and concisely in plain text — no markdown, no asterisks. Keep it under 150 words. Start directly with the answer.",
+                        messages: [{ role: 'user', content: input }]
+                    })
+                });
 
                 const data = await response.json();
 
                 if (data.content && data.content[0] && data.content[0].text) {
-                    const answer = data.content[0].text;
-                    output.innerHTML = `<span class="success">> [Response]</span>\n\n${escapeHtml(answer)}`;
+                    output.innerHTML = '<span class="success">> [Response]</span>\n\n' + escapeHtml(data.content[0].text);
                 } else if (data.error) {
-                    output.innerHTML = `<span class="error">> API Error: ${escapeHtml(data.error.message)}</span>`;
+                    output.innerHTML = '<span class="error-text">> API Error: ' + escapeHtml(data.error.message || JSON.stringify(data.error)) + '</span>';
                 } else {
-                    output.innerHTML = '<span class="error">> Unexpected response format. Please try again.</span>';
+                    output.innerHTML = '<span class="error-text">> Unexpected response. Please try again.</span>';
                 }
             } catch (err) {
-                output.innerHTML = `<span class="error">> Connection error: ${escapeHtml(err.message)}</span>`;
+                output.innerHTML = '<span class="error-text">> Connection error: ' + escapeHtml(err.message) + '</span>';
             } finally {
                 btn.disabled = false;
                 btn.textContent = 'Execute';
@@ -421,10 +326,9 @@ setTimeout(revealAll, 1000);
         }
 
         function escapeHtml(str) {
-            return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+            return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
         }
 
-        // Enter key support
         document.getElementById('aiInput').addEventListener('keydown', function(e) {
             if (e.key === 'Enter') runBioQuery();
         });
@@ -433,34 +337,28 @@ setTimeout(revealAll, 1000);
         const canvas = document.getElementById('rainCanvas');
         const ctx = canvas.getContext('2d');
         let width, height, particles;
-
         function initNetwork() {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
             particles = [];
             for (let i = 0; i < 80; i++) {
-                particles.push({
-                    x: Math.random() * width, y: Math.random() * height,
-                    vx: (Math.random() - 0.5) * 1.5, vy: (Math.random() - 0.5) * 1.5,
-                    radius: Math.random() * 2 + 1
-                });
+                particles.push({ x: Math.random()*width, y: Math.random()*height, vx: (Math.random()-0.5)*1.5, vy: (Math.random()-0.5)*1.5, radius: Math.random()*2+1 });
             }
         }
-
         function drawNetwork() {
-            ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = 'rgba(0, 229, 153, 0.8)';
-            ctx.strokeStyle = 'rgba(0, 229, 153, 0.15)';
+            ctx.clearRect(0,0,width,height);
+            ctx.fillStyle = 'rgba(0,229,153,0.8)';
+            ctx.strokeStyle = 'rgba(0,229,153,0.15)';
             ctx.lineWidth = 1;
             for (let i = 0; i < particles.length; i++) {
                 let p = particles[i];
                 p.x += p.vx; p.y += p.vy;
                 if (p.x < 0 || p.x > width) p.vx *= -1;
                 if (p.y < 0 || p.y > height) p.vy *= -1;
-                ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.fill();
-                for (let j = i + 1; j < particles.length; j++) {
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2); ctx.fill();
+                for (let j = i+1; j < particles.length; j++) {
                     let p2 = particles[j];
-                    let dist = Math.sqrt(Math.pow(p.x-p2.x,2) + Math.pow(p.y-p2.y,2));
+                    let dist = Math.sqrt((p.x-p2.x)**2 + (p.y-p2.y)**2);
                     if (dist < 120) { ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(p2.x,p2.y); ctx.stroke(); }
                 }
             }
@@ -472,12 +370,14 @@ setTimeout(revealAll, 1000);
         // Ziyal Bot
         const bot = document.getElementById('ziyalBot');
         document.addEventListener('click', function(e) {
-            if (e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT' || e.target.tagName === 'A' || e.target.closest('.switch')) return;
-            const clickX = e.clientX; const clickY = e.clientY;
-            const botRect = bot.getBoundingClientRect(); const currentX = botRect.left + (botRect.width / 2);
+            if (e.target.tagName==='BUTTON' || e.target.tagName==='INPUT' || e.target.tagName==='A') return;
+            const clickX = e.clientX, clickY = e.clientY;
+            const botRect = bot.getBoundingClientRect();
+            const currentX = botRect.left + botRect.width/2;
             bot.className = clickX < currentX ? 'face-left' : 'face-right';
-            bot.style.left = clickX + 'px'; bot.style.top = clickY + 'px';
-            setTimeout(() => { bot.classList.add('jump'); setTimeout(() => { bot.classList.remove('jump'); }, 500); }, 400);
+            bot.style.left = clickX + 'px';
+            bot.style.top = clickY + 'px';
+            setTimeout(() => { bot.classList.add('jump'); setTimeout(() => bot.classList.remove('jump'), 500); }, 400);
         });
     </script>
 </body>
