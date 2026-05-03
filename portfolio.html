@@ -95,16 +95,30 @@
 <body>
     <canvas id="rainCanvas"></canvas>
     <div id="ziyalBot">
-        <svg width="60" height="60" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <g style="filter: drop-shadow(0 0 8px var(--accent-primary));">
-                <path d="M 20 40 Q 50 -10, 80 40 Q 80 80, 50 90 Q 20 80, 20 40 Z" fill="rgba(10,10,10,0.9)" stroke="var(--accent-primary)" stroke-width="4"/>
-                <rect x="35" y="35" width="30" height="12" rx="4" fill="#050505" stroke="var(--accent-primary)" stroke-width="2"/>
-                <circle cx="43" cy="41" r="3" fill="var(--accent-primary)"><animate attributeName="opacity" values="1;0.1;1" dur="2s" repeatCount="indefinite"/></circle>
-                <line x1="50" y1="22" x2="50" y2="8" stroke="var(--accent-primary)" stroke-width="3"/>
-                <circle cx="50" cy="8" r="4" fill="var(--accent-primary)"/>
-            </g>
-        </svg>
-    </div>
+    <svg id="botSvg" width="60" height="60" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <g style="filter: drop-shadow(0 0 8px var(--accent-primary));">
+            <path d="M 20 40 Q 50 -10, 80 40 Q 80 80, 50 90 Q 20 80, 20 40 Z" fill="rgba(10,10,10,0.9)" stroke="var(--accent-primary)" stroke-width="4"/>
+            <!-- Eye display (normal = bar, thinking = dots, done = arc) -->
+            <rect id="eyeBar" x="30" y="37" width="40" height="8" rx="4" fill="#050505" stroke="var(--accent-primary)" stroke-width="2"/>
+            <!-- Normal: two calm eyes -->
+            <circle id="eyeL" cx="40" cy="41" r="3" fill="var(--accent-primary)">
+                <animate id="blinkNormal" attributeName="opacity" values="1;1;0.1;1" dur="3s" repeatCount="indefinite"/>
+            </circle>
+            <circle id="eyeR" cx="60" cy="41" r="3" fill="var(--accent-primary)">
+                <animate attributeName="opacity" values="1;1;0.1;1" dur="3s" begin="0.1s" repeatCount="indefinite"/>
+            </circle>
+            <!-- Thinking: rapid spin dots (hidden by default) -->
+            <circle id="thinkDot1" cx="38" cy="41" r="2.5" fill="var(--accent-primary)" opacity="0"/>
+            <circle id="thinkDot2" cx="50" cy="41" r="2.5" fill="var(--accent-primary)" opacity="0"/>
+            <circle id="thinkDot3" cx="62" cy="41" r="2.5" fill="var(--accent-primary)" opacity="0"/>
+            <!-- Antenna -->
+            <line x1="50" y1="22" x2="50" y2="8" stroke="var(--accent-primary)" stroke-width="3"/>
+            <circle id="antennaTip" cx="50" cy="8" r="4" fill="var(--accent-primary)">
+                <animate id="antennaGlow" attributeName="r" values="4;4;4" dur="1s" repeatCount="indefinite"/>
+            </circle>
+        </g>
+    </svg>
+</div>
     <div class="glass-wrapper">
         <nav>
             <a href="#home">Ziyal.</a>
@@ -241,8 +255,8 @@
             </section>
 
             <section class="fade-in">
-                <h2>Biology AI Sandbox</h2>
-                <p>Ask any biology question — powered by Gemini. Real answers, not a simulation.</p>
+                <h2>AI Sandbox</h2>
+                <p>Ask anything — biology, code, systems, research. Powered by Gemini.</p>
                 <div class="playground-box">
                     <div class="input-group">
                         <input type="text" id="aiInput" placeholder="e.g., How does CRISPR work? What is Hardy-Weinberg principle?"/>
@@ -369,6 +383,52 @@
 
         // Ziyal Bot
         const bot = document.getElementById('ziyalBot');
+        const eyeL = document.getElementById('eyeL');
+        const eyeR = document.getElementById('eyeR');
+        const thinkDot1 = document.getElementById('thinkDot1');
+        const thinkDot2 = document.getElementById('thinkDot2');
+        const thinkDot3 = document.getElementById('thinkDot3');
+        const antennaTip = document.getElementById('antennaTip');
+        
+        let thinkInterval = null;
+        
+        function setBotState(state) {
+            if (state === 'thinking') {
+                // Hide normal eyes
+                eyeL.setAttribute('opacity', '0');
+                eyeR.setAttribute('opacity', '0');
+                // Show thinking dots with blinking animation
+                let step = 0;
+                thinkInterval = setInterval(() => {
+                    thinkDot1.setAttribute('opacity', step === 0 ? '1' : '0.2');
+                    thinkDot2.setAttribute('opacity', step === 1 ? '1' : '0.2');
+                    thinkDot3.setAttribute('opacity', step === 2 ? '1' : '0.2');
+                    step = (step + 1) % 3;
+                }, 200);
+                // Antenna rapid pulse
+                antennaTip.innerHTML = '<animate attributeName="r" values="4;7;4" dur="0.4s" repeatCount="indefinite"/>';
+            } else if (state === 'done') {
+                clearInterval(thinkInterval);
+                // Flash green briefly
+                thinkDot1.setAttribute('opacity', '0');
+                thinkDot2.setAttribute('opacity', '0');
+                thinkDot3.setAttribute('opacity', '0');
+                eyeL.setAttribute('opacity', '1');
+                eyeR.setAttribute('opacity', '1');
+                antennaTip.innerHTML = '<animate attributeName="r" values="4;9;4" dur="0.3s" repeatCount="3"/>';
+                setTimeout(() => setBotState('normal'), 1000);
+            } else {
+                // Normal
+                clearInterval(thinkInterval);
+                thinkDot1.setAttribute('opacity', '0');
+                thinkDot2.setAttribute('opacity', '0');
+                thinkDot3.setAttribute('opacity', '0');
+                eyeL.setAttribute('opacity', '1');
+                eyeR.setAttribute('opacity', '1');
+                antennaTip.innerHTML = '<animate attributeName="r" values="4;4;4" dur="1s" repeatCount="indefinite"/>';
+            }
+        }
+        
         document.addEventListener('click', function(e) {
             if (e.target.tagName==='BUTTON' || e.target.tagName==='INPUT' || e.target.tagName==='A') return;
             const clickX = e.clientX, clickY = e.clientY;
