@@ -23,6 +23,7 @@ export default async function handler(req, res) {
   );
 
   const data = await response.json();
+  console.log('Gemini raw response:', JSON.stringify(data));
   const text = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response';
   res.json({ content: [{ text }] });
 }
