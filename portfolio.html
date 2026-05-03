@@ -308,7 +308,8 @@
 
             btn.disabled = true;
             btn.textContent = 'Running...';
-            output.innerHTML = '<span class="thinking">> Querying biological knowledge base...</span>';
+            output.innerHTML = '<span class="thinking">> Processing query...</span>';
+            setBotState('thinking');
 
             try {
                 const response = await fetch('https://rohith-a.vercel.app/api/bio-ask', {
@@ -317,7 +318,7 @@
                     body: JSON.stringify({
                         model: 'gemini-2.0-flash',
                         max_tokens: 1000,
-                        system: "You are a biology expert assistant. Answer biology questions clearly and concisely in plain text — no markdown, no asterisks. Keep it under 150 words. Start directly with the answer.",
+                        system: "You are Ziyal, an intelligent assistant at the intersection of biology and technology. Answer questions clearly and concisely in plain text — no markdown, no asterisks, no bullet points. Keep it under 150 words. Start directly with the answer.",
                         messages: [{ role: 'user', content: input }]
                     })
                 });
@@ -336,6 +337,7 @@
             } finally {
                 btn.disabled = false;
                 btn.textContent = 'Execute';
+                setBotState('done');
             }
         }
 
